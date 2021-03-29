@@ -21,6 +21,15 @@
     var OPENMRS_CONTEXT_PATH = '${ ui.contextPath() }';
 </script>
 
+<script type="text/javascript">
+	jQuery(function () {
+    	jQuery("#togglePassword").click(function () {
+        	jQuery(this).toggleClass("fa-eye fa-eye-slash");
+            var type = jQuery(this).hasClass("fa-eye-slash") ? "text" : "password";
+            jQuery("#password").attr("type", type);
+        });
+    });
+</script>
 
 <% if(showSessionLocations) { %>
 <script type="text/javascript">
@@ -148,7 +157,10 @@
                                 <label for="password">
                                     ${ ui.message("referenceapplication.login.password") }:
                                 </label>
-                                <input class="form-control form-control-sm form-control-lg form-control-md" id="password" type="password" name="password" placeholder="${ ui.message("referenceapplication.login.password.placeholder") }"/>
+                                <span>
+	                                <input class="form-control form-control-sm form-control-lg form-control-md" id="password" type="password" name="password" placeholder="${ ui.message("referenceapplication.login.password.placeholder") }"/>
+	                               	<i class="far fa-eye" id="togglePassword"></i>
+                                </span>
                             </p>
                             <% } %>
 
